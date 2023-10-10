@@ -1,0 +1,31 @@
+model_file: ~/personachat_offline_rl/offline_rl_bb3/checkpoint3
+model: projects.seeker.agents.seeker:ComboFidGoldDocumentAgent
+no_cuda: false
+init_opt: gen/r2c2_bb3
+datapath: ~/ParlAI/data
+interactive_mode: true
+no_cuda: false
+# skip_generation: true
+batchsize: 8
+eval_batchsize: 8
+optimizer: adam
+# fp16: false
+fp16_impl: mem_efficient
+gpu_beam_blocking: true
+override:
+  gpu_beam_blocking: true
+  # fp16: false
+  fp16_impl: mem_efficient
+  batchsize: 8
+  eval_batchsize: 8
+  # learningrate: 4.25e-07
+  ddp_backend: ddp
+  optimizer: adam
+  # skip_generation: true
+  init_opt: gen/r2c2_bb3
+  datapath: ~/ParlAI/data
+  no_cuda: false
+  model: projects.seeker.agents.seeker:ComboFidGoldDocumentAgent
+  model_file: zoo:bb3/bb3_3B/model
+  interactive_mode: true
+  # model_parallel: true

@@ -1,0 +1,35 @@
+model_file: ~/ParlAI/data/models/bb3/bb3_3B/model
+model: offline_rl_agent:OfflineRLAgent
+no_cuda: false
+init_opt: gen/r2c2_bb3
+datapath: ~/ParlAI/data
+interactive_mode: false
+no_cuda: false
+skip_generation: true
+batchsize: 8
+eval_batchsize: 8
+optimizer: adam
+# fp16: false
+fp16_impl: mem_efficient
+num_epoch: 4
+training_data: ~/personachat_offline_rl/data/filtered_data.json
+save_model_path: ~/personachat_offline_rl/offline_rl_bb3/checkpoints
+importance_sampling: varmi
+is_lower_bound: .01 # lower bound for importance weights
+override:
+  # fp16: false
+  fp16_impl: mem_efficient
+  batchsize: 8
+  eval_batchsize: 8
+  learningrate: 5.0e-07
+  ddp_backend: ddp
+  optimizer: adam
+  skip_generation: true
+  init_opt: gen/r2c2_bb3
+  datapath: ~/ParlAI/data
+  no_cuda: false
+  model: offline_rl_agent:OfflineRLAgent
+  model_file: zoo:bb3/bb3_3B/model
+  interactive_mode: false
+  model_parallel: true
+
